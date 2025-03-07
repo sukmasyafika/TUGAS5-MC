@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">TUGAS2</string>
+    <string name="textJdl">Already\nhave an\nAccount?</string>
+    <string name="Etext">Email Address</string>
+    <string name="Etext1">Enter your email address</string>
+    <string name="Ptext">Password</string>
+    <string name="Ptext1">Enter your password</string>
+    <string name="Ftext">Forget Password?</string>
+    <string name="lgn">Login</string>
+    <string name="lgnWith">Or Login With</string>
+    <string name="regis">Dont have an account? Register now</string>
+    <string name="textJdl2">Create\nNew\nAccount</string>
+    <string name="login">Already have an Account? Login Now</string>
+    <string name="nametext">Username</string>
+    <string name="nametext2">Enter your Username</string>
+    <string name="passtext">Confirm Password</string>
+    <string name="passtext2">Enter your Confirm Password</string>
+    <string name="regisbtn">Register</string>
+    <string name="textforgot">Forget Password</string>
+    <string name="textforgot1">Send Reset Link</string>
+    <string name="textforgot2">Back to Login</string>
+
+</resources>

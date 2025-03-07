@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="pink">#EC7FA9</color>
+    <color name="ungu">#B7B1F2</color>
+    <color name="ungucerah">#441752</color>
+    <color name="hitam">#55000000</color>
+    <color name="abu">#A0A0A7</color>
+    <color name="biru">#7886C7</color>
+    <color name="birumuda">#A9B5DF</color>
+    <color name="biruterang">#2D336B</color>
+
+</resources>
