@@ -1,12 +1,16 @@
 package com.example.tugas2
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.tugas2.databinding.ActivityForgetPasswordBinding
 
-class Forget_Password : AppCompatActivity() {
+class ForgetPassword : AppCompatActivity() {
+    private lateinit var binding: ActivityForgetPasswordBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -16,5 +20,19 @@ class Forget_Password : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        binding = ActivityForgetPasswordBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        //pesan
+        binding.btnLink.setOnClickListener{
+            Toast.makeText(this, "Link reset telah dikirim." , Toast.LENGTH_SHORT).show()
+        }
+
+        // kembali ke login
+        binding.txtbacklogin.setOnClickListener{
+            startActivity(Intent(this, Login::class.java))
+        }
+
     }
 }
