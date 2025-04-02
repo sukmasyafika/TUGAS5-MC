@@ -37,5 +37,10 @@ class Main : AppCompatActivity() {
             finish()
         }
 
+        // Btn RV
+        binding.btnRV.setOnClickListener{
+            startActivity(Intent(this, RecyclerView::class.java))
+        }
+
     }
 }

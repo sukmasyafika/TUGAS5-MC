@@ -19,5 +19,6 @@
     <string name="textforgot">Forget Password</string>
     <string name="textforgot1">Send Reset Link</string>
     <string name="textforgot2">Back to Login</string>
+    <string name="textRV">RecyclerView</string>
 
 </resources>
