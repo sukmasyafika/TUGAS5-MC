@@ -21,8 +21,8 @@ class Main : AppCompatActivity() {
             insets
         }
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+//        binding = ActivityMainBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
 
         val pesan = intent.getStringExtra(EXTRA_MESSAGE)
 
@@ -39,7 +39,7 @@ class Main : AppCompatActivity() {
 
         // Btn RV
         binding.btnRV.setOnClickListener{
-            startActivity(Intent(this, RecyclerView::class.java))
+            startActivity(Intent(this, ProdukRecyclerView::class.java))
         }
 
     }

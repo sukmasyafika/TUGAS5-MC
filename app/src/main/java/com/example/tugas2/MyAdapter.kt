@@ -7,11 +7,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter(private val namaList: ArrayList<ItemData>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
+class MyAdapter(private val produkList: ArrayList<ItemData>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
+
+    var onItemClick : ((ItemData) -> Unit)? = null
+
     class MyViewHolder (itemData: View) : RecyclerView.ViewHolder (itemData) {
         val gambar: ImageView = itemData.findViewById(R.id.imageView)
         val nama: TextView = itemData.findViewById(R.id.NamaProduk)
         val desk: TextView = itemData.findViewById(R.id.deskProduk)
+        val harga: TextView = itemData.findViewById(R.id.hargaProduk)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -19,13 +23,18 @@ class MyAdapter(private val namaList: ArrayList<ItemData>) : RecyclerView.Adapte
         return MyViewHolder(itemData)
     }
 
-    override fun getItemCount(): Int = namaList.size
+    override fun getItemCount(): Int = produkList.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentItem = namaList[position]
-        holder.gambar.setImageResource(currentItem.gambar)
-        holder.nama.text = currentItem.nama
-        holder.desk.text = currentItem.desk
+        val item = produkList[position]
+        holder.gambar.setImageResource(item.gambar)
+        holder.nama.text = item.nama
+        holder.desk.text = item.desk
+        holder.harga.text = "Rp %,d".format(item.harga)
+
+        holder.itemView.setOnClickListener{
+            onItemClick?.invoke(item)
+        }
     }
 
 

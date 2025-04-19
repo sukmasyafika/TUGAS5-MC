@@ -41,19 +41,18 @@
             app:layout_constraintTop_toTopOf="@id/imageView" />
 
         <TextView
-            android:id="@+id/deskProduk"
+            android:id="@+id/hargaProduk"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Deskripsi produk"
-            android:textColor="@color/biru"
+            android:text="Harga produk"
+            android:textColor="#E91E63"
             android:textSize="14sp"
-            android:maxLines="3"
-            android:ellipsize="end"
             app:layout_constraintBottom_toBottomOf="@id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/imageView"
             app:layout_constraintTop_toBottomOf="@id/NamaProduk" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

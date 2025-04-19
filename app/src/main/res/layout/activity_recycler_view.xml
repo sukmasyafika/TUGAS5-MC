@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bckg"
-    tools:context=".RecyclerView">
+    tools:context=".ProdukRecyclerView">
 
     <ImageButton
         android:id="@+id/btnback"
