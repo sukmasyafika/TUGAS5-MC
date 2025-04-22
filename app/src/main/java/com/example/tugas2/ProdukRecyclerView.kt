@@ -6,7 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tugas2.databinding.ActivityRecyclerViewBinding
 
@@ -38,6 +38,7 @@ class ProdukRecyclerView : AppCompatActivity() {
 
         produkRecyclerView = findViewById(R.id.produkRV)
         listProduk = ArrayList()
+
 
         listProduk.add(
             ItemData(
@@ -147,7 +148,7 @@ class ProdukRecyclerView : AppCompatActivity() {
             )
         )
 
-        produkRecyclerView.layoutManager = LinearLayoutManager(this)
+        produkRecyclerView.layoutManager = GridLayoutManager(this, 2)
         produkRecyclerView.setHasFixedSize(true)
         produkAdapter = MyAdapter(listProduk)
         produkRecyclerView.adapter = produkAdapter

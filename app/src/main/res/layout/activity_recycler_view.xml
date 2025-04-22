@@ -6,7 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bckg"
-    tools:context=".ProdukRecyclerView">
+    tools:context=".ProdukRecyclerView"
+    android:clipToPadding="false"
+    android:scrollbars="vertical"
+    android:padding="4dp">
 
     <ImageButton
         android:id="@+id/btnback"
@@ -44,6 +47,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.text.NumberFormat
+import java.util.Locale
 
 class MyAdapter(private val produkList: ArrayList<ItemData>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
 
@@ -14,7 +16,6 @@ class MyAdapter(private val produkList: ArrayList<ItemData>) : RecyclerView.Adap
     class MyViewHolder (itemData: View) : RecyclerView.ViewHolder (itemData) {
         val gambar: ImageView = itemData.findViewById(R.id.imageView)
         val nama: TextView = itemData.findViewById(R.id.NamaProduk)
-        val desk: TextView = itemData.findViewById(R.id.deskProduk)
         val harga: TextView = itemData.findViewById(R.id.hargaProduk)
     }
 
@@ -29,13 +30,12 @@ class MyAdapter(private val produkList: ArrayList<ItemData>) : RecyclerView.Adap
         val item = produkList[position]
         holder.gambar.setImageResource(item.gambar)
         holder.nama.text = item.nama
-        holder.desk.text = item.desk
-        holder.harga.text = "Rp %,d".format(item.harga)
+        holder.harga.text = NumberFormat.getCurrencyInstance(Locale("id", "ID")).apply {
+            maximumFractionDigits = 0
+        }.format(item.harga)
 
         holder.itemView.setOnClickListener{
             onItemClick?.invoke(item)
         }
     }
-
-
 }

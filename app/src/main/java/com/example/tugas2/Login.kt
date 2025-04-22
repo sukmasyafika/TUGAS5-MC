@@ -29,9 +29,14 @@ class Login : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        // Btn Login
-        binding.btnLogin.setOnClickListener{
-            startActivity(Intent(this, Main::class.java))
+        //kirim username / email
+        binding.btnLogin.setOnClickListener {
+            val editText = findViewById<EditText>(R.id.etEmail)
+            val message = editText.text.toString()
+            val intent = Intent(this, Main::class.java).apply {
+                putExtra(EXTRA_MESSAGE, message)
+            }
+            startActivity(intent)
         }
 
         // text register
@@ -59,15 +64,5 @@ class Login : AppCompatActivity() {
             startActivity(Intent(Intent.ACTION_VIEW,Uri.parse("https://github.com/login")))
         }
 
-        //kirim username / email
-        binding.btnLogin.setOnClickListener {
-            val editText = findViewById<EditText>(R.id.etEmail)
-            val message = editText.text.toString()
-            val intent = Intent(this, Main::class.java). apply {
-                putExtra(EXTRA_MESSAGE, message)
-            }
-            startActivity(intent)
-        }
-        
     }
 }
