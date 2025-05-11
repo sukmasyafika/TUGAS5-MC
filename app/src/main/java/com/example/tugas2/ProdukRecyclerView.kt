@@ -148,6 +148,7 @@ class ProdukRecyclerView : AppCompatActivity() {
             )
         )
 
+    //Mengatur layout-nya dalam bentuk grid dengan 2 kolom.
         produkRecyclerView.layoutManager = GridLayoutManager(this, 2)
         produkRecyclerView.setHasFixedSize(true)
         produkAdapter = MyAdapter(listProduk)

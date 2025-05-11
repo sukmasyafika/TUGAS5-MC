@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.text.NumberFormat
+import java.util.Locale
 
 class DetailProduk : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -33,14 +35,18 @@ class DetailProduk : AppCompatActivity() {
             gambar.setImageResource(produk.gambar)
             textJudul.text = produk.nama
             textDesk.text = produk.desk
-            textHarga.text = produk.harga.toString()
+            val formatRupiah = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
+            formatRupiah.maximumFractionDigits = 0
+            textHarga.text = formatRupiah.format(produk.harga)
+
+
         }
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navigation_home -> {
-                    Toast.makeText( this, "Hone click", Toast.LENGTH_SHORT).show()
+                    Toast.makeText( this, "Home click", Toast.LENGTH_SHORT).show()
                     true }
                 R.id.navigation_search -> {
                     Toast.makeText( this, "Search click", Toast.LENGTH_SHORT).show()

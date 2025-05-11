@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "199519551512",
+    "project_id": "sukma-c3335",
+    "storage_bucket": "sukma-c3335.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199519551512:android:6fd39cb9b95c823e75436d",
+        "android_client_info": {
+          "package_name": "com.example.tugas2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP4CxTqhk-n7RoEOpQC3dTWV9FR27C4zw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

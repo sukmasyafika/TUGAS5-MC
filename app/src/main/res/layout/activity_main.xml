@@ -8,11 +8,24 @@
     android:layout_height="match_parent"
     tools:context=".Main">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/id_toolbar"
+            android:layout_width="411dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/ungu"
+            app:layout_scrollFlags="enterAlways|scroll" />
+    </com.google.android.material.appbar.AppBarLayout>
+
     <ImageView
         android:id="@+id/img1"
         android:layout_width="350dp"
         android:layout_height="350dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/bg3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -46,6 +59,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textUsername" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

@@ -3,41 +3,63 @@ package com.example.tugas2
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.EditText
+import android.util.Patterns
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.tugas2.databinding.ActivityLoginBinding
+import com.google.firebase.auth.FirebaseAuth
 
-
-const val EXTRA_MESSAGE = "com.example.projectsharemessage.MESSAGE"
 
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var firebaseAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_login)
+
+//        setContentView(R.layout.activity_login)
+
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
+        firebaseAuth = FirebaseAuth.getInstance()
 
-        //kirim username / email
         binding.btnLogin.setOnClickListener {
-            val editText = findViewById<EditText>(R.id.etEmail)
-            val message = editText.text.toString()
-            val intent = Intent(this, Main::class.java).apply {
-                putExtra(EXTRA_MESSAGE, message)
+            val email : String = binding.etEmail.text.toString().trim()
+            val password : String = binding.etPassword.text.toString().trim()
+
+            if (email.isEmpty()){
+                binding.etEmail.error = "Input Email"
+                binding.etEmail.requestFocus()
+                return@setOnClickListener
             }
-            startActivity(intent)
+
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                binding.etEmail.error = "Invalid email"
+                binding.etEmail.requestFocus()
+                return@setOnClickListener
+            }
+
+            if (password.isEmpty() || password.length < 6) {
+                binding.etPassword.error = "password harus 6 karakter"
+                binding.etPassword.requestFocus()
+                return@setOnClickListener
+            }
+
+            loginUser(email, password)
+
         }
+
 
         // text register
         binding.textRegister.setOnClickListener{
@@ -46,7 +68,9 @@ class Login : AppCompatActivity() {
 
         // text lupa password
         binding.txtForget.setOnClickListener{
-            startActivity(Intent(this, ForgetPassword::class.java))
+            Intent(this, ForgetPassword::class.java).also {
+                startActivity(it)
+            }
         }
 
         //facebook
@@ -65,4 +89,30 @@ class Login : AppCompatActivity() {
         }
 
     }
+
+    private fun loginUser(email: String, password: String) {
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Intent(this, Main::class.java).also { intent ->
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                    }
+                } else {
+                    Toast.makeText(this, "${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (firebaseAuth.currentUser != null) {
+            Intent(this, Main::class.java).also {
+                it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(it)
+            }
+        }
+    }
+
+
 }
